@@ -1,6 +1,6 @@
 {
 	"build": [
-		["example/web_live", "docker/images/web_live/Dockerfile"],
-		["example/tools", "docker/images/tools/Dockerfile"]
+		["registry.csmk.it/example/web_live", "docker/images/web_live/Dockerfile"],
+		["registry.csmk.it/example/tools", "docker/images/tools/Dockerfile"]
 	]
 }
