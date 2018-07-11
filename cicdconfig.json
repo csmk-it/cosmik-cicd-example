@@ -1,0 +1,6 @@
+{
+	"build": [
+		["example/web_live", "docker/images/web_live/Dockerfile"],
+		["example/tools", "docker/images/tools/Dockerfile"]
+	]
+}
