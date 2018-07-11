@@ -30,6 +30,6 @@ COPY ./docker/images/web_live/project.conf /etc/nginx/snippets/project.conf
 RUN /bin/bash -c "source /root/.phpbrew/bashrc \
         && composer.phar dump-autoload --optimize \
         && composer.phar run-script post-install-cmd \
-    && chown -R www-data:www-data /project
+    && chown -R www-data:www-data /project"
 
 # All affected files from the last line are part of the image layer, so the project have to pushed twice every time.
