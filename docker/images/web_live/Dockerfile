@@ -18,8 +18,6 @@ COPY ./composer.json /project/composer.json
 
 COPY ./composer.lock /project/composer.lock
 
-COPY ./auth.json /project/auth.json
-
 # add github fingerprint - see: https://github.com/composer/composer/issues/3572
 RUN mkdir ~/.ssh \
     && ssh-keyscan -H github.com >> ~/.ssh/known_hosts \
