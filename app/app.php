@@ -3,7 +3,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-	$r->addRoute('GET', '/', function() {
+	$r->addRoute('GET', '/example/', function() {
 		return "Hello";
 	});
 });
