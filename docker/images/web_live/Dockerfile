@@ -32,7 +32,7 @@ RUN /bin/bash -c "source /root/.phpbrew/bashrc \
         && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests \
         && echo "END" \
         # Remove dev dependencies and optimize autoloader: \
-        && composer.phar install --no-dev --optimize-autoloader" \
+        && composer.phar install --no-dev --optimize-autoloader" | echo ERROR \
     && chown -R www-data:www-data /project
 
 # All affected files from the last line are part of the image layer, so the project have to pushed twice every time.
