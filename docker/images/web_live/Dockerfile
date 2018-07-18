@@ -30,7 +30,7 @@ RUN /bin/bash -c "\
         && composer.phar dump-autoload \
         && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests \
         && composer.phar install --no-dev --optimize-autoloader \
-        ; exit 0" \
+        ; exit 0"
 
 RUN exit 1 && chown -R www-data:www-data /project
 
