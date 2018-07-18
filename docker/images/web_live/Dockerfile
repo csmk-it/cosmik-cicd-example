@@ -29,7 +29,7 @@ RUN /bin/bash -c "source /root/.phpbrew/bashrc \
         && composer.phar dump-autoload \
         && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests \
         && composer.phar install --no-dev --optimize-autoloader \
-        ; exit 0"
+        ; exit 1"
 
 RUN chown -R www-data:www-data /project
 
