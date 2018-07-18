@@ -26,13 +26,13 @@ COPY ./ /project
 COPY ./docker/images/web_live/project.conf /etc/nginx/snippets/project.conf
 
 RUN /bin/bash -c "\
-        output=$(source /root/.phpbrew/bashrc \
+        source /root/.phpbrew/bashrc \
         && composer.phar dump-autoload \
         # Make tests: \
-        && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests \
+        && export output=$(./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests) \
+        && export status=$? \
         # Remove dev dependencies and optimize autoloader: \
-        && composer.phar install --no-dev --optimize-autoloader) \
-        status=$? \
+        && composer.phar install --no-dev --optimize-autoloader \
         ; (echo $output && exit $status)" \
     && chown -R www-data:www-data /project
 
