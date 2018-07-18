@@ -28,12 +28,14 @@ COPY ./docker/images/web_live/project.conf /etc/nginx/snippets/project.conf
 RUN /bin/bash -c "\
         source /root/.phpbrew/bashrc \
         && composer.phar dump-autoload \
-        # Make tests: \
         && export output=$(./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests) \
         && export status=$? \
-        # Remove dev dependencies and optimize autoloader: \
         && composer.phar install --no-dev --optimize-autoloader \
-        ; (echo $output && exit $status)" \
+        ; (echo $output && exit 1)" \
     && chown -R www-data:www-data /project
 
 # All affected files from the last line are part of the image layer, so the project have to pushed twice every time.
+
+
+# Run tests: \
+# Remove dev dependencies and optimize autoloader: \
