@@ -31,11 +31,8 @@ RUN /bin/bash -c "\
         && export output=$(./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests) \
         && export status=$? \
         && composer.phar install --no-dev --optimize-autoloader \
-        ; (echo $output && exit 1)" \
-    && chown -R www-data:www-data /project
+        ; echo $output" \
+
+RUN exit 1 && chown -R www-data:www-data /project
 
 # All affected files from the last line are part of the image layer, so the project have to pushed twice every time.
-
-
-# Run tests: \
-# Remove dev dependencies and optimize autoloader: \
