@@ -28,10 +28,9 @@ COPY ./docker/images/web_live/project.conf /etc/nginx/snippets/project.conf
 RUN /bin/bash -c "\
         source /root/.phpbrew/bashrc \
         && composer.phar dump-autoload \
-        && export output=$(./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests) \
-        && export status=$? \
+        && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests \
         && composer.phar install --no-dev --optimize-autoloader \
-        ; echo $output" \
+        ; exit 0" \
 
 RUN exit 1 && chown -R www-data:www-data /project
 
