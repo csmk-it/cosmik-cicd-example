@@ -27,7 +27,7 @@ COPY ./docker/images/web_live/project.conf /etc/nginx/snippets/project.conf
 
 RUN /bin/bash -c "source /root/.phpbrew/bashrc \
         && composer.phar dump-autoload \
-        && ./vendor/bin/phpunit --colors never --bootstrap vendor/autoload.php --testdox --stderr tests \
+        && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --stderr tests \
         && composer.phar install --no-dev --optimize-autoloader \
         ; exit 0"
 
