@@ -26,6 +26,7 @@ COPY ./ /project
 COPY ./docker/images/web_live/project.conf /etc/nginx/snippets/project.conf
 
 RUN /bin/bash -c "source /root/.phpbrew/bashrc \
+        && echo Das ist ein Test \
         && composer.phar dump-autoload \
         # Make tests: \
         && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests \
