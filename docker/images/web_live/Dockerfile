@@ -1,17 +1,5 @@
 FROM cosmik/web:master
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 68576280 \
-        && echo "deb https://deb.nodesource.com/node_6.x xenial main" | tee /etc/apt/sources.list.d/nodesource.list \
-        && apt-get update -yq \
-        && apt-get install --no-install-recommends -yq \
-            nodejs \
-        && rm -rf /var/lib/apt/lists/* \
-        && npm config set bin-links false \
-        && cd /project \
-        && curl https://getcomposer.org/installer | /bin/bash -c "source /root/.phpbrew/bashrc \
-            && php -- --install-dir=/usr/local/bin \
-            && composer.phar global require hirak/prestissimo"
-
 COPY ./composer.json /project/composer.json
 
 COPY ./composer.lock /project/composer.lock
