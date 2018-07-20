@@ -10,7 +10,7 @@ final class ControllerTest extends TestCase
 	{
 		$this->assertEquals(
 			'user@example.com',
-			'userxx@example.com'
+			'userx@example.com'
 		);
 	}
 }
