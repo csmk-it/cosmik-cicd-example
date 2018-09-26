@@ -20,7 +20,7 @@ pipeline {
 
                 script {
                     customImage.inside {
-                        cat readme.md
+                        sh 'cat readme.md'
                     }
                 }
             }
