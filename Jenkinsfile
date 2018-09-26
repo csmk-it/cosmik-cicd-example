@@ -28,7 +28,9 @@ pipeline {
             steps {
                 echo 'Pushing...'
 
-                customImage.push('latest')
+                script {
+                    customImage.push('latest')
+                }
             }
         }
         stage('Deploy') {
