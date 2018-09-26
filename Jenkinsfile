@@ -8,13 +8,17 @@ pipeline {
 
                 script {
                     def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ./docker/images/web_live/Dockerfile .")
-                    customImage.push()
+                    // customImage.push()
                 }
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+
+                customImage.inside {
+                    cat readme.md
+                }
             }
         }
         stage('Deploy') {
