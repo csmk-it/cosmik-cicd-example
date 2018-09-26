@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
 
                 script {
-                    def customImage = docker.build("my-image:${env.BUILD_ID}", "./docker/images/web_live/Dockerfile")
+                    def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ./docker/images/web_live/Dockerfile .")
                     customImage.push()
                 }
             }
