@@ -16,8 +16,10 @@ pipeline {
             steps {
                 echo 'Testing..'
 
-                customImage.inside {
-                    cat readme.md
+                script {
+                    customImage.inside {
+                        cat readme.md
+                    }
                 }
             }
         }
